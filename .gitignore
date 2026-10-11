@@ -1,0 +1,33 @@
+# macOS System Files
+.DS_Store
+._*
+.Trashes
+
+# Ignore large media and raw files
+*.mp4
+*.mov
+*.avi
+*.pdf
+*.doc
+*.docx
+*.pptx
+*.ppt
+*.zip
+*.rar
+*.psd
+*_backup_orig.html
+
+# Ignore raw materials and video folders
+教學影片/
+教學動畫/
+課本/
+**/素材/
+**/新版製作紀錄/
+**/work/
+
+# Node / Temp
+node_modules/
+/private/tmp/
+*.log
+__pycache__/
+*.pyc
