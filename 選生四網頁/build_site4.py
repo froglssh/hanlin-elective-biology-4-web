@@ -207,7 +207,7 @@ def chapter(c, prev_c, next_c):
 ''' + FOOT
 
 # ---------------- 發布總表 ----------------
-BASE = "https://froglssh.github.io/hanlin-elective-biology-4-web/" + quote("選生四新網頁") + "/"
+BASE = "https://froglssh.github.io/hanlin-elective-biology-4-web/" + quote("選生四網頁") + "/"
 def table():
     L = ["# 翰林版 選修生物 (Ⅳ) 教學網頁發布總表", "",
          f"本清單為 **翰林版選修生物 (Ⅳ)** 教學網頁總表。包含全冊 {len(CHAPTERS)} 大章節、{nU} 個正課單元與 {nL} 個探討活動的 GitHub Pages 線上網址、章節入口與 Google 雲端硬碟教學影片對照。",
@@ -223,13 +223,13 @@ def table():
     for c in CHAPTERS:
         for u in c['units']:
             f = unit_file(u)
-            L.append(f"| **{u['code']}** | {u['web']} | [{f[:-5]}]({BASE}{quote(f)}) | [觀看影片]({V(u['vid'])}) | P.{u['pg']} |")
+            L.append(f"| **{u['code']}** | {u['web']} | [開啟網頁]({BASE}{quote(f)}) | [觀看影片]({V(u['vid'])}) | P.{u['pg']} |")
     L += ["", "---", "", f"## 🔬 探討活動（{nL} 個）— 獨立互動教學網頁", "",
           "| 單元 | 頁面名稱 | 🚀 獨立網址 (GitHub Pages) | 🎬 雲端硬碟教學影片 | 課本頁碼 |", "| :---: | :--- | :--- | :--- | :---: |"]
     for c in CHAPTERS:
         for l in c['labs']:
             f = lab_file(l)
-            L.append(f"| **探討活動 {l['code']}** | {l['web']} | [{f[:-5]}]({BASE}{quote(f)}) | [觀看影片]({V(l['vid'])}) | P.{l['pg']} |")
+            L.append(f"| **探討活動 {l['code']}** | {l['web']} | [開啟網頁]({BASE}{quote(f)}) | [觀看影片]({V(l['vid'])}) | P.{l['pg']} |")
     return '\n'.join(L) + '\n'
 
 if __name__ == '__main__':
