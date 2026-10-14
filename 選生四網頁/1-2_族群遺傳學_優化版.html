@@ -201,7 +201,7 @@ dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96dvh
 .l-mob{display:none}
 @media (max-height:700px) and (min-width:881px){.l-side{padding:6px}.l-side h3{margin:4px 6px 2px}.l-item{padding:2px 8px}.qtext{font-size:15px}.qtitle{font-size:18px}.hero{padding-top:14px}.hero h1{font-size:32px}.cs{min-height:54px;font-size:15px}.pts{font-size:15px}.ctitle{font-size:19px}.fb{font-size:13.5px}}
 </style>
-</head>
+<style id="drive-fix">.vframe,.video-frame{position:relative}.drive-player{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000}</style></head>
 <body>
 <header id="site-header"><div class="site-in">
  <button class="brand-btn" onclick="navTo('intro')" aria-label="回主題首頁"><div class="brand-badge">IV</div><div class="brand-text"><span class="brand-course">選修生物Ⅳ · 第 1 章 演化</span><span class="brand-title">1-2 族群遺傳學</span></div></button>
@@ -309,8 +309,8 @@ dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96dvh
 
 <section id="video" class="view">
  <div>
-  <div class="vframe"><video id="main-video" controls preload="none"><source src="../教學影片/1-2 族群遺傳學_教學影片.mp4" type="video/mp4"><source src="../教學動畫/1-2 族群遺傳學.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video></div>
-  <div class="vmeta"><h2>1-2 族群遺傳學｜教學動畫</h2><p>影片需與網頁放在原本的資料夾結構中播放（../教學影片 或 ../教學動畫）。右側時間軸可直接跳到各段。</p></div>
+  <div class="vframe"><video id="main-video" hidden preload="none"></video><iframe class="drive-player" title="教學影片" data-src="https://drive.google.com/file/d/1sqG95y5FdbpxoKlfD3-f0rg-UVlm_11f/preview" allow="autoplay; fullscreen; encrypted-media" allowfullscreen loading="lazy"></iframe></div>
+  <div class="vmeta"><h2>1-2 族群遺傳學｜教學影片</h2><p>影片由雲端硬碟播放器提供。右側時間軸可對照各段內容；點選時間後，請於播放器進度列拖到該時間點。</p></div>
  </div>
  <div class="tl"><h3>⏱ 章節時間軸</h3><div id="tl-list"></div></div>
 </section>
@@ -582,5 +582,5 @@ function resetAll(){ if(!confirm('確定要清除全部作答紀錄嗎？')) ret
 
 load(); buildTL(); homeProg(); setBar();
 </script>
-</body>
+<script id="drive-fix-js">(function(){var sec=document.getElementById("video");var fr=document.querySelector(".drive-player");if(!sec||!fr)return;function hint(msg){var box=document.querySelector(".vmeta,.player-meta");if(!box)return;var h=document.getElementById("seek-hint");if(!h){h=document.createElement("p");h.id="seek-hint";h.style.cssText="margin-top:8px;color:var(--accent,#0E7C74);font-weight:600;font-size:15px";box.appendChild(h);}h.textContent=msg;}document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var b=t.closest("#tl-list button,#video-tl-list button");if(!b)return;e.preventDefault();e.stopImmediatePropagation();hint("請於播放器進度列拖到「"+b.textContent.trim()+"」");},true);function sync(){if(sec.classList.contains("active")){var s=fr.getAttribute("data-src");if(fr.getAttribute("src")!==s)fr.setAttribute("src",s);}else{fr.setAttribute("src","about:blank");}}new MutationObserver(sync).observe(sec,{attributes:true,attributeFilter:["class"]});sync();})();</script></body>
 </html>

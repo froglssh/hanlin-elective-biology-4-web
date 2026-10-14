@@ -1350,7 +1350,7 @@ nav.site-nav {
 @media(min-width:769px) and (max-height:800px){#intro .concept-capsules{display:none}#intro .hero-box{padding-top:5px;padding-bottom:5px}#intro .cards-grid{margin-bottom:8px}}
 @media(max-width:768px){.mobile-drag-board{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:10px}.mobile-drag-row{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:10px;display:grid;gap:8px}.mobile-drag-row p{margin:0;font-size:16px;line-height:1.5;color:var(--ink);font-weight:600}.mobile-drag-row .drop-slot{position:static;width:100%;height:auto;min-height:46px;font-size:16px;line-height:1.4;padding:8px}.mobile-drag-board+.q-right-tray .pieces-container{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 </style>
-</head>
+<style id="drive-fix">.vframe,.video-frame{position:relative}.drive-player{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:#000}</style></head>
 <body>
 
 <!-- Site Header -->
@@ -1567,20 +1567,13 @@ nav.site-nav {
 <section id="video" class="view-section">
   <div class="video-layout">
     <div class="player-box">
-      <div class="video-switch-bar" style="display:flex;gap:10px;padding:10px 16px;background:var(--surface-2);border-bottom:1px solid var(--line);">
-        <button id="btn-switch-full" class="lbtn active" style="font-size:14px;padding:6px 14px;border-radius:6px;background:var(--accent);color:var(--accent-ink);border:none;cursor:pointer;" onclick="switchVideoSource('full')">🎬 完整教學影片 (7分29秒)</button>
-        <button id="btn-switch-anim" class="lbtn" style="font-size:14px;padding:6px 14px;border-radius:6px;background:var(--surface);color:var(--ink);border:1px solid var(--line);cursor:pointer;" onclick="switchVideoSource('anim')">🎞️ PPT動畫短片 (2分)</button>
-      </div>
       <div class="video-frame">
-        <video id="main-video" controls preload="none">
-          <source id="video-src-mp4" src="../教學影片/探討2-1 頂級掠食者消失對群集結構的影響_教學影片.mp4" type="video/mp4">
-          您的瀏覽器不支援 HTML5 影片播放。
-        </video>
+        <video id="main-video" hidden preload="none"></video><iframe class="drive-player" title="教學影片" data-src="https://drive.google.com/file/d/1MgsABuf2pGf5aoZusSd8N3f6K35aZmYU/preview" allow="autoplay; fullscreen; encrypted-media" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="player-meta">
         <h2 class="v-title" id="video-display-title">探討活動 2-1 頂級掠食者消失對群集結構的影響｜完整教學影片</h2>
         <p class="v-desc" id="video-display-desc">
-          本影片詳細剖析黃石國家公園灰狼獵殺滅絕、加拿大馬鹿過度啃食林木危機、1995 年灰狼再引入計畫實施、加拿大馬鹿族群調控、河狸築壩濕地復甦，以及營養階層串聯效應之完整探究歷程。右側時間軸提供各節點快速切換。
+          本影片詳細剖析黃石國家公園灰狼獵殺滅絕、加拿大馬鹿過度啃食林木危機、1995 年灰狼再引入計畫實施、加拿大馬鹿族群調控、河狸築壩濕地復甦，以及營養階層串聯效應之完整探究歷程。右側時間軸可對照各節內容；點選時間後，請於播放器進度列拖到該時間點。
         </p>
       </div>
     </div>
@@ -2482,7 +2475,7 @@ function switchVideoSource(type) {
   } else {
     vid.src = "../教學影片/探討2-1 頂級掠食者消失對群集結構的影響_教學影片.mp4";
     if(title) title.innerText = "探討活動 2-1 頂級掠食者消失對群集結構的影響｜完整教學影片";
-    if(desc) desc.innerText = "本影片詳細剖析黃石國家公園灰狼獵殺滅絕、加拿大馬鹿過度啃食林木危機、1995 年灰狼再引入計畫實施、加拿大馬鹿族群調控、河狸築壩濕地復甦，以及營養階層串聯效應之完整探究歷程。右側時間軸提供各節點快速切換。";
+    if(desc) desc.innerText = "本影片詳細剖析黃石國家公園灰狼獵殺滅絕、加拿大馬鹿過度啃食林木危機、1995 年灰狼再引入計畫實施、加拿大馬鹿族群調控、河狸築壩濕地復甦，以及營養階層串聯效應之完整探究歷程。右側時間軸可對照各節內容；點選時間後，請於播放器進度列拖到該時間點。";
     if(btnFull) { btnFull.style.background = 'var(--accent)'; btnFull.style.color = 'var(--accent-ink)'; btnFull.style.border = 'none'; }
     if(btnAnim) { btnAnim.style.background = 'var(--surface)'; btnAnim.style.color = 'var(--ink)'; btnAnim.style.border = '1px solid var(--line)'; }
   }
@@ -2501,5 +2494,5 @@ window.addEventListener('DOMContentLoaded', () => {
   updateHomeProgress();
 });
 </script>
-</body>
+<script id="drive-fix-js">(function(){var sec=document.getElementById("video");var fr=document.querySelector(".drive-player");if(!sec||!fr)return;function hint(msg){var box=document.querySelector(".vmeta,.player-meta");if(!box)return;var h=document.getElementById("seek-hint");if(!h){h=document.createElement("p");h.id="seek-hint";h.style.cssText="margin-top:8px;color:var(--accent,#0E7C74);font-weight:600;font-size:15px";box.appendChild(h);}h.textContent=msg;}document.addEventListener("click",function(e){var t=e.target;if(!t||!t.closest)return;var b=t.closest("#tl-list button,#video-tl-list button");if(!b)return;e.preventDefault();e.stopImmediatePropagation();hint("請於播放器進度列拖到「"+b.textContent.trim()+"」");},true);function sync(){if(sec.classList.contains("active")){var s=fr.getAttribute("data-src");if(fr.getAttribute("src")!==s)fr.setAttribute("src",s);}else{fr.setAttribute("src","about:blank");}}new MutationObserver(sync).observe(sec,{attributes:true,attributeFilter:["class"]});sync();})();</script></body>
 </html>
