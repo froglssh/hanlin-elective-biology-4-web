@@ -21,7 +21,7 @@ SITE = "翰林版 選修生物（Ⅳ）"
 FOOT = f'''<footer class="foot">
   <div class="foot-in">
     <img src="img/hanlin-logo.png" alt="" width="34" height="34">
-    <p>內容整理自翰林版高中《{BOOKNAME}》課本，簡介依課文重點改寫，圖片取自課本，僅供課堂教學使用。<br>各節互動教學網頁由臺北市立麗山高中生物科自編製作，發布於 GitHub Pages；教學影片存放於 Google 雲端硬碟。</p>
+    <p>內容整理自翰林版高中《{BOOKNAME}》課本，簡介依課文重點改寫，圖片取自課本，僅供課堂教學使用。</p>
   </div>
 </footer>
 <div class="lightbox" id="lightbox" hidden>
